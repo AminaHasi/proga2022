@@ -1,90 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Human
+namespace WindowsFormsApp3
 {
-    struct UDC
-    {
-        private int _id;
-        private string _udc;
-        
-        public UDC(int id, string udc)
-        {
-            _id = id;
-            _udc = udc;
-        }
-        
-        public override string ToString()
-        {
-            return "Id: " + _id + "\n" + "Name: " + _udc;
-        }
-        
-        public int Id
-        {
-            get => _id;
-            set => _id = value;
-        }
-        
-        public string Udc
-        {
-            get => _udc;
-            set => _udc = value;
-        }
-    }
-    
     class CourseWork
     {
-        private string _description;
-        private string _name;
-        private DateTime _date;
-        private UDC _udc;
-        public CourseWork(string description, string name, DateTime date, UDC udc)
+        private string description;
+        private string name;
+        private DateTime date;
+        public CourseWork(string description, string name, DateTime date)
         {
-            _description = description;
-            _name = name;
-            _date = date;
-            _udc = udc;
+            this.description = description;
+            this.name = name;
+            this.date = date;
         }
-
-        public void PrintInfo()
+        public void printInfo()
         {
-            var text = "Description: " + _description + "\n" +
-                       "Name: " + _name + "\n" +
-                       "Date: " + _date + "\n" +
-                       "UDC: " + _udc;
-
+            string text = "Description: " + this.description + "\n" +
+                "Name: " + this.name + "\n" + "Date: " + this.date;
             Console.WriteLine(text);
         }
-        
-        public override string ToString()
+        public string strinfo()
         {
-            return "Description: " + _description + "\n" +
-                 "Name: " + _name + "\n" +
-                 "Date: " + _date + "\n" +
-                 "UDC: " + _udc;
+            return "Description: " + this.description +
+                "Name: " + this.name + "Date: " + this.date;
         }
-
         public string Description
         {
-            get { return _description; }
-            set { _description = value; }
+            get { return description; }
+            set { description = value; }
         }
-        
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-        
         public DateTime Date
         {
-            get { return _date; }
-            set { _date = value; }
+            get { return date; }
+            set { date = value; }
         }
-        
-        public UDC Udc
+        public string Name
         {
-            get { return _udc; }
-            set { _udc = value; }
+            get { return name; }
+            set { name = value; }
         }
 
     }

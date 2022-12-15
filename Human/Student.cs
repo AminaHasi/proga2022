@@ -1,59 +1,53 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Human
+namespace WindowsFormsApp3
 {
-    public enum Key { Csharp, Python, Java }
-    class Student : Human
+    public enum Key {csharp, python, java, js}
+    public class Student : Human
     {
-        private int _group;
-        private int _money;
-        private Key _key;
+        private int group;
+        private int money;
+        private Key key;
 
         public Student() : base()
         {
+
         }
-        
         public Student(string name, string surname, int age, double height,
-            double weight, bool habits, string email, Nation nation, Address address, int group, int money, Key key) : base(name, surname,
-                age, height, weight, habits, email, nation, address)
+            double weight, bool habbits, Nation nation, Adress adress, string email, int group, int money, Key key) : base(name, surname,
+                age, height, weight, habbits, nation, adress, email)
         {
-            _group = group;
-            _money = money;
-            _key = key;
+            this.group = group;
+            this.money = money;
+            this.key = key;
         }
-        
-        public override void PrintInfo()
+        public void printInfo()
         {
-            var data =
-               ToString() + "\n" +
-               "Group: " + _group + "\n" +
-               "Money: " + _money + "\n" +
-                "Key: " + _key;
+            string data =
+               "Group: " + this.group.ToString() + "\n" +
+               "Money: " + this.money.ToString() + "\n" +
+               "Key: " + this.key.ToString();
             Console.WriteLine(data);
 
         }
-        
         public int Group
         {
-            get { return _group; }
-            set { _group = value; }
+            get { return group; }
+            set { group = value; }
         }
-        
         public int Money
         {
-            get { return _money; }
-            set { _money = value; }
+            get { return money; }
+            set { money = value; }
         }
-        
         public Key Key
         {
-            get { return _key; }
-            set { _key = value; }
+            get { return key; }
+            set { key = value; }
         }
     }
 }

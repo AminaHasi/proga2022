@@ -4,157 +4,125 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Human
+namespace WindowsFormsApp3
 {
-    public enum Nation { Ukrainian, French, Polish };
-    class Human
+    public enum Nation { Ukranian, French, Polish };
+    public class Human
     {
-        protected string _name;
-        protected string _surname;
-        protected int _age;
-        protected double _height;
-        protected double _weight;
-        protected bool Habits;
-        protected string _email;
-        protected Nation _nation;
-        protected Address _address;
+        protected string __name;
+        protected string __surname;
+        protected int __age;
+        protected double __height;
+        protected double __weight;
+        protected bool __habbits;
+        protected Nation __nation;
+        protected Adress __adress;
+        private string __email;
+
 
         public Human()
         {
-            _name = "Jane";
-            _surname = "Ford";
-            _age = 18;
-            _height = 1.78;
-            _weight = 56;
-            Habits = false;
-            _email = "janeford@gmail.com";
-            _nation = Nation.French;
-            _address = new Address();
+            Console.WriteLine("creature Person");
+            this.__name = "Name";
+            this.__surname = "Surname";
+            this.__age = 0;
+            this.__height = 0;
+            this.__weight = 0;
+            this.__habbits = false;
+            this.__nation = Nation.Ukranian;
+            this.__adress = new Adress();
+            this.__email = "gogogo@gmail.com";
+            Console.WriteLine("Creation completed Person");
         }
-        
-        public Human(string name, string surname, int age, double height, double weight, bool habits, string email, Nation nation, Address address)
+        public Human(string name, string surname, int age, double height, double weight, bool habbits, Nation nation, Adress adress, string email)
         {
-            _name = name;
-            _surname = surname;
-            _age = age;
-            _height = height;
-            _weight = weight;
-            Habits = habits;
-            _email = email;
-            _nation = nation;
-            _address = address;
+            this.__name = name;
+            this.__surname = surname;
+            this.__age = age;
+            this.__height = height;
+            this.__weight = weight;
+            this.__habbits = habbits;
+            this.__nation = nation;
+            this.__adress = adress;
+            this.__email = email;
         }
-        
-        public static Human operator +(Human one, Human two) => new Human
+        public string toStr()
         {
-            _age = one._age + two._age,
-            Habits = one.Habits && two.Habits
-        };
-        
-        public static bool operator >(Human one, Human two) => one._age > two._age;
-        
-        public static bool operator <(Human one, Human two) => one._age < two._age;
-        
-        public virtual void PrintInfo()
-        {
-            var data =
-                "Name: " + _name + "\n" +
-                "Surname: " + _surname + "\n" +
-                "Age: " + _age + "\n" +
-                "Height: " + _height + "\n" +
-                "Weight: " + _weight + "\n" +
-                "Is Habbits: " + Habits + "\n" +
-                "Email: " + _email + "\n" +
-                "Nation: " + _nation + "\n" +
-                "Adress: " + _address;
-            Console.WriteLine(data);
+            string str =
+                "Name: " + this.__name +                     "\r\n" +
+                "Surname: " + this.__surname +               "\r\n" +
+                "Age: " + this.__age.ToString() +            "\r\n" +
+                "Height: " + this.__height.ToString() +      "\r\n" +
+                "Weight: " + this.__weight.ToString() +      "\r\n" +
+                "Is Habbits: " + this.__habbits.ToString() + "\r\n" +
+                "Nation: " + this.__nation.ToString() +      "\r\n" +
+                "Adress: " + this.__adress.toString();
+            return str;
         }
-        
-        public override string ToString() => 
-             "Name: " + _name + "\n" +
-             "Surname: " + _surname + "\n" +
-             "Age: " + _age + "\n" +
-             "Height: " + _height + "\n" +
-             "Weight: " + _weight + "\n" +
-             "Is Habbits: " + Habits + "\n" +
-             "Email: " + _email + "\n" +
-             "Nation: " + _nation + "\n" +
-             "Address: " + _address;
-        
-        public void InputInfo(HumanList humanList)
+        public virtual void printInfo()
+            { Console.WriteLine(this.toStr()); }
+
+        public static void inputInfo(listHuman list)
         {
-            Console.WriteLine("Name: ");
-            var name = Console.ReadLine();
-            Console.WriteLine("Surname: ");
-            var surname = Console.ReadLine();
-            Console.WriteLine("Age: ");
-            int.TryParse(Console.ReadLine(), out var age);
-            Console.WriteLine("Height: ");
-            double.TryParse(Console.ReadLine(), out var height);
-            Console.WriteLine("Weight: ");
-            double.TryParse(Console.ReadLine(), out var weight);
-            Console.WriteLine("Habbits: ");
-            bool.TryParse(Console.ReadLine(), out var habits);
-            Console.WriteLine("Email: ");
-            var email = Console.ReadLine();
-            Console.WriteLine("Nation: ");
-            var nation = (Nation)Enum.Parse(typeof(Nation), Console.ReadLine(), true);
-            var address = new Address();
-            var human = new Human(name, surname, age, height, weight, habits, email, nation, Address.InputAddress());
-            humanList.Add(human);
+            Console.WriteLine("Name: "); string name = Console.ReadLine();
+            Console.WriteLine("Surname: "); string surname = Console.ReadLine();
+            Console.WriteLine("Age: "); int age = int.Parse(Console.ReadLine());
+            Console.WriteLine("Height: "); double height = double.Parse(Console.ReadLine());
+            Console.WriteLine("Weight: "); double weight = double.Parse(Console.ReadLine());
+            Console.WriteLine("Habbits: "); bool habbits = bool.Parse(Console.ReadLine());
+            Console.WriteLine("Nation: "); Nation nation = (Nation)Enum.Parse(typeof(Nation), Console.ReadLine(), true);
+            Adress adr = new Adress();
+            Console.WriteLine("Email: "); string email = Console.ReadLine();
+            Human n = new Human(name, surname, age, height, weight, habbits, nation, adr.inputAdress(), email);
+            list.addHuman(n);
         }
 
         public string Name
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return __name; }
+            set { __name = value; }
         }
 
         public string Surname
         {
-            get { return _surname; }
-            set { _surname = value; }
+            get { return __surname; }
+            set { __surname = value; }
         }
 
         public int Age
         {
-            get { return _age; }
-            set { _age = value; }
+            get { return __age; }
+            set { __age = value; }
         }
 
         public double Height
         {
-            get { return _height; }
-            set { _height = value; }
+            get { return __height; }
+            set { __height = value; }
         }
-
         public double Weight
         {
-            get { return _weight; }
-            set { _weight = value; }
+            get { return __weight; }
+            set { __weight = value; }
         }
 
         public bool Habbits
         {
-            get { return Habbits; }
-            set { Habbits = value; }
+            get { return __habbits; }
+            set { __habbits = value; }
         }
-        public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
+
         public Nation Nation
         {
-            get { return _nation; }
-            set { _nation = value; }
+            get { return __nation; }
+            set { __nation = value; }
         }
 
-        public Address Address
+        public Adress Adress
         {
-            get { return _address; }
-            set { _address = value; }
+            get { return __adress; }
+            set { __adress = value; }
         }
-
+        
     }
 }
