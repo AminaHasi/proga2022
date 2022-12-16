@@ -35,28 +35,7 @@ namespace WindowsFormsApp3
             InitializeComponent();
         }
 
-        /*private void Createteacher_Click(object sender, EventArgs e)
-        {
-            string InErr = "";
-
-            string name = HName.Text;
-            string surname = HSurname.Text;
-            int age = 0; if (!int.TryParse(HAge.Text, out age)) { InErr += "age not is int\n"; }
-            double height = 0; if (!double.TryParse(HHeight.Text, out height)) { InErr += "height not is double\n"; }
-            double weight = 0; if (!double.TryParse(HWeight.Text, out weight)) { InErr += "weight not is double\n"; }
-            //bool habbits = false; if (!bool.TryParse(HHabbits.Text, out habbits)){ InErr += "habbits is not true or false\n"; }
-            //else { habbits = true; }
-            //Nation nation; if (!Enum.TryParse(HNation.Text, out nation)) { InErr += "nation is not correct\n"; }
-            //Adress
-            string country = HCountry.Text;
-            string city = HCity.Text;
-            string street = HStreet.Text;
-            string email = HEmail.Text;
-            int house = 0; if (!int.TryParse(HHouse.Text, out house)) { InErr += "house not is int\n"; }
-
-            LMessage.Text = InErr;
-        }*/
-
+        
         private void Form2_Load(object sender, EventArgs e)
         {
             chart1.Series.RemoveAt(0);
@@ -238,14 +217,14 @@ namespace WindowsFormsApp3
         private void Pochta_Click(object sender, EventArgs e)
         {
             MailAddress Otrymuvach = new MailAddress("Почта  отримувача");
-            MailAddress Vidpravnyk = new MailAddress("Моя почта");
+            MailAddress Vidpravnyk = new MailAddress("Почта відправника");
 
             MailMessage Povidomlennya = new MailMessage(Vidpravnyk, Otrymuvach);
             Povidomlennya.IsBodyHtml = true;
             Povidomlennya.Body = "<h1>Message_text</h1>";
             Povidomlennya.Subject = "Windows Forms";
             SmtpClient new_smtp = new SmtpClient("smtp.gmail.com", 587);
-            new_smtp.Credentials = new NetworkCredential("Моя почта", "Мій пароль");
+            new_smtp.Credentials = new NetworkCredential("Почта", "Пароль");
             new_smtp.EnableSsl = true;
             new_smtp.Send(Povidomlennya);
         }
